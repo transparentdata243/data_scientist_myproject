@@ -18,6 +18,32 @@ Below is an example classification result for the message: she is really sick sh
 
 ![alt text](screenshots/message_classification_example.png)
 
+## Files
+
+.
+├── app
+│   ├── run.py
+│   └── templates
+│       ├── go.html
+│       └── master.html
+├── data
+│   ├── disaster_categories.csv
+│   ├── disaster_messages.csv
+│   ├── DisasterResponse.db
+│   ├── process_data.py
+│   └── YourDatabaseName.db
+├── models
+│   ├── classifier.pkl
+│   └── train_classifier.py
+├── notebooks
+│   ├── ETL Pipeline Preparation.ipynb
+│   └── ML Pipeline Preparation.ipynb
+├── README.md
+└── screenshots
+    ├── category_count.png
+    ├── message_classification_example.png
+    └── message_input.png
+
 
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
