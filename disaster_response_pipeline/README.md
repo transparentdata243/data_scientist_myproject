@@ -6,7 +6,7 @@ This project analyzes disaster data from [Figure Eight](https://appen.com/) to b
 An emergency worker can input a message and get classification results in 36 response categories from the web app. The web app also displays visualizations of the data.
 
 Here are a few screenshots of the web app.
-[Display the message category counts](screenshots/category_count.png)
+![alt text](screenshots/category_count.png)
 
 
 ### Instructions:
