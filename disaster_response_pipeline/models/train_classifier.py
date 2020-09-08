@@ -18,6 +18,17 @@ from sklearn.metrics import classification_report
 
 
 def load_data(database_filepath):
+    '''
+    INPUT:
+    database_filepath: the database file to be read 
+
+    OUTPUT:
+    X - panda series with messages to be trained
+    y - dataframe with category columns and corresponding values
+    list(y.columns.values) - a list contains the column names
+
+    Reads the database and loads X, y, list(y.columns.values) accordingly
+    '''
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql("SELECT * FROM disasterResponse", engine)
     X = df['message']
@@ -25,6 +36,21 @@ def load_data(database_filepath):
     return X, y, list(y.columns.values)
 
 def tokenize(text):
+    '''
+    INPUT:
+    text - a string that contains message
+
+    OUTPUT:
+    lemmed - tokenized string
+
+    This API does the following to the input string and return the processed
+    result
+    - normalization
+    - puncutation removal
+    - split on space
+    - remove stop words based on nltk dict
+    - lemmatization
+    '''
     nltk.download('punkt')
     nltk.download('stopwords')
     nltk.download('wordnet')
@@ -42,6 +68,16 @@ def tokenize(text):
     return lemmed
 
 def build_model():
+    '''
+    INPUT:
+    None
+
+    OUTPUT:
+    cv - a machine learning model
+
+    Creates a pipeline with CountVectorizer, TfidfTranformer, and classisifier
+    Use GridSearchCV to tune pipeline parameters
+    '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer = tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -56,24 +92,50 @@ def build_model():
     cv = GridSearchCV(pipeline, param_grid = parameters, verbose = 10)
     return cv
 
-# Get results and add them to a dataframe.
 def get_classification_report(y_test, y_pred):
     """
-    To get F1 score,precision for each category
-    Param:
+    INPUT:
     y_test - actual y values 
     y_pred - predicted y values
+
+    OUTPUT:
+    None
+
+    Prints F1 score, precision for each category
     """
     for ind,cat in enumerate(y_test.keys()): 
         print("Classification report for {}".format(cat))
         print(classification_report(y_test.iloc[:,ind], y_pred[:,ind]))
         
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    INPUT:
+    model - machine learning model to be evaluated 
+    X_test - Test input data
+    Y_test - Test output data
+    category_names - classification categories
+
+    OUTPUT:
+    NONE
+
+    Prints classification results as a evaluation for the training model using
+    test data
+    '''
     y_test_pred = model.predict(X_test)
     print(get_classification_report(Y_test, y_test_pred))    
 
 
 def save_model(model, model_filepath):
+    '''
+    INPUT:
+    model - ML model to be saved
+    model_filepath - ML model file path
+
+    OUTPUT:
+    None
+
+    Saves the ML model to a pickle file
+    '''
     pickle.dump(model, open(model_filepath, 'wb'))
 
 

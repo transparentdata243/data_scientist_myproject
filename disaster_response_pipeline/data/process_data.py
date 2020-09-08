@@ -4,6 +4,16 @@ import numpy as np
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    INPUT:
+    messages_filepath - the csv file path for the messages, genres, etc
+    categories_filepath - the csv file path for the message categories
+
+    OUTPUT:
+    df - a dataframe that the dataframes from the input csv files
+
+    Reads the two input csv files and merges them based on the 'id' field
+    '''
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = pd.merge(messages, categories, on='id')
@@ -11,6 +21,26 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    '''
+    INPUT:
+    df - dataframe to be cleaned
+
+    OUTPUT:
+    df - dataframe that is cleaned
+
+    Split `categories` into separate category columns.
+    - Split the values in the `categories` column on the `;` character so that each value becomes a separate column. You'll find [this method](https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.Series.str.split.html) very helpful! Make sure to set `expand=True`.
+    - Use the first row of categories dataframe to create column names for the categories data.
+    - Rename columns of `categories` with new column names. 
+
+    Converts category values to just numbers 0 or 1.
+    - Iterate through the category columns in df to keep only the last character of each string (the 1 or 0). For example, related-0 becomes 0, related-1 becomes 1. Convert the string to a numeric value.
+    - You can perform normal string actions on Pandas Series, like indexing, by including .str after the Series. You may need to first convert the Series to be of type string, which you can do with astype(str)    
+
+    Replace categories column in df with new category columns.
+    - Drop the categories column from the df dataframe since it is no longer needed.
+    - Concatenate df and categories data frames. 
+    '''
     # 3. Split `categories` into separate category columns.
     #- Split the values in the `categories` column on the `;` character so that each value becomes a separate column. You'll find [this method](https://pandas.pydata.org/pandas-docs/version/0.23/generated/pandas.Series.str.split.html) very helpful! Make sure to set `expand=True`.
     # - Use the first row of categories dataframe to create column names for the categories data.
@@ -36,7 +66,7 @@ def clean_data(df):
         # convert column from string to numeric
         categories[column] = categories[column].astype(int)
     
-    # Confirm values in each column of the categories dataframe are, in fact, only 0's and 1's.
+    # DEBUG ONLY: Confirm values in each column of the categories dataframe are, in fact, only 0's and 1's.
     #for column in categories:
     #    if len(np.unique(categories[column])) != 2:
     #        print(column, np.unique(categories[column]))
@@ -58,6 +88,14 @@ def clean_data(df):
     
     
 def save_data(df, database_filename):
+    '''
+    INPUT:
+    df - dataframe to save
+    database_filename - save to database filename 
+
+    Saves the df to a database file
+
+    '''
     engine = create_engine('sqlite:///{}'.format(database_filename))
     df.to_sql('disasterResponse', engine, index=False)  
 
