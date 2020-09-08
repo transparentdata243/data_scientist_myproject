@@ -22,27 +22,27 @@ Below is an example classification result for the message: she is really sick sh
 ```bash
 .
 ├── app 
-│   ├── run.py ---------------------------# flask file that runs the web app
+│   ├── run.py ------------------------------# flask file that runs the web app
 │   └── templates 
-│       ├── go.html ----------------------# classification result web page
-│       └── master.html ------------------# main web page
+│       ├── go.html -------------------------# classification result web page
+│       └── master.html ---------------------# main web page
 ├── data
-│   ├── disaster_categories.csv ----------# data source: messages' categories
-│   ├── disaster_messages.csv ------------# data source: messages, genre, etc
-│   ├── DisasterResponse.db --------------# database with the cleaned data
-│   ├── process_data.py ------------------# perform ETL on data sources
+│   ├── disaster_categories.csv -------------# data source: messages' categories
+│   ├── disaster_messages.csv ---------------# data source: messages, genre, etc
+│   ├── DisasterResponse.db -----------------# database with the cleaned data
+│   ├── process_data.py ---------------------# perform ETL on data sources
 ├── models
-│   ├── classifier.pkl
-│   └── train_classifier.py
+│   ├── classifier.pkl ----------------------# machine learning model
+│   └── train_classifier.py -----------------# perform ML training and testing on DisasterResponse.db
 ├── notebooks
-│   ├── ETL Pipeline Preparation.ipynb
-│   └── ML Pipeline Preparation.ipynb
-├── README.md
-├── requirements.txt
+│   ├── ETL Pipeline Preparation.ipynb ------# ipython notebook for ETL
+│   └── ML Pipeline Preparation.ipynb -------# ipython notebook for ML training and testing
+├── README.md -------------------------------# README file
+├── requirements.txt ------------------------# software dependencies
 └── screenshots
-    ├── category_count.png
-    ├── message_classification_example.png
-    └── message_input.png
+    ├── category_count.png ------------------# the categories and genre count screenshot
+    ├── message_classification_example.png---# the message classification result screenshot
+    └── message_input.png -------------------# the message input
 ```
 
 ### Instructions:
