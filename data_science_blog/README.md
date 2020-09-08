@@ -20,3 +20,5 @@ Q5: What is the ranking of the asset classes in these incidents?
 Q6: Does any months has more incidents or more leaks than the others across the years?
 
 [Project Notebook: Data Science Blog](http://nbviewer.jupyter.org/github/transparentdata243/data_scientist_myproject/blob/master/data_science_blog/breaches.ipynb)
+
+[Medium Blog](https://medium.com/@emy.cohen.ec/these-breach-data-will-make-you-rethink-data-security-37e064d46ea8)
