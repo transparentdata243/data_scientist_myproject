@@ -21,17 +21,16 @@ Below is an example classification result for the message: she is really sick sh
 ## Files
 ```bash
 .
-├── app
-│   ├── run.py
-│   └── templates
-│       ├── go.html
-│       └── master.html
+├── app 
+│   ├── run.py ---------------------------# flask file that runs the web app
+│   └── templates 
+│       ├── go.html ----------------------# classification result web page
+│       └── master.html ------------------# main web page
 ├── data
-│   ├── disaster_categories.csv
-│   ├── disaster_messages.csv
-│   ├── DisasterResponse.db
-│   ├── process_data.py
-│   └── YourDatabaseName.db
+│   ├── disaster_categories.csv ----------# data source: messages' categories
+│   ├── disaster_messages.csv ------------# data source: messages, genre, etc
+│   ├── DisasterResponse.db --------------# database with the cleaned data
+│   ├── process_data.py ------------------# perform ETL on data sources
 ├── models
 │   ├── classifier.pkl
 │   └── train_classifier.py
@@ -39,6 +38,7 @@ Below is an example classification result for the message: she is really sick sh
 │   ├── ETL Pipeline Preparation.ipynb
 │   └── ML Pipeline Preparation.ipynb
 ├── README.md
+├── requirements.txt
 └── screenshots
     ├── category_count.png
     ├── message_classification_example.png
@@ -57,3 +57,11 @@ Below is an example classification result for the message: she is really sick sh
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+
+## Software Requirements
+This project uses Python 3.6.3 and the necessary libraries are mentioned in requirements.txt. 
+
+## Credits and Acknowledgements
+Thanks Udacity and Figure Eight to provide such a great end to end project
+experience on such a meaningful topic. 
