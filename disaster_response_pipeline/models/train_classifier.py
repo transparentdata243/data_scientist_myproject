@@ -47,7 +47,14 @@ def build_model():
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
-    return pipeline
+
+    parameters = {
+        'vect__min_df': [1, 2],
+        'clf__estimator__max_features': [0.25]
+    }
+
+    cv = GridSearchCV(pipeline, param_grid = parameters, verbose = 10)
+    return cv
 
 # Get results and add them to a dataframe.
 def get_classification_report(y_test, y_pred):
