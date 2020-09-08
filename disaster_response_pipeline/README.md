@@ -19,7 +19,7 @@ Below is an example classification result for the message: she is really sick sh
 ![alt text](screenshots/message_classification_example.png)
 
 ## Files
-
+```bash
 .
 ├── app
 │   ├── run.py
@@ -43,7 +43,7 @@ Below is an example classification result for the message: she is really sick sh
     ├── category_count.png
     ├── message_classification_example.png
     └── message_input.png
-
+```
 
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
