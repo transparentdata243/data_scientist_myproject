@@ -1,5 +1,14 @@
 # Disaster Response Pipeline Project
 
+## Project Overview
+This project analyzes disaster data from [Figure Eight](https://appen.com/) to build a machine learning model for an API that classifies disaster messages. The goal of the project is to practice building ETL and machine learning pipelines and data visualizations on using web app (Flask and Ginga).
+
+An emergency worker can input a message and get classification results in 36 response categories from the web app. The web app also displays visualizations of the data.
+
+Here are a few screenshots of the web app.
+[Display the message category counts](screenshots/category_count.png)
+
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
