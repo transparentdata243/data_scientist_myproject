@@ -14,7 +14,7 @@ for classification result.
 
 ![alt text](screenshots/message_input.png)
 
-Here is an example classification result:
+Below is an example classification result for the message: she is really sick she need your help. please use my phone number to get more informations about her. We waiting for your answers.  
 
 ![alt text](screenshots/message_classification_example.png)
 
